@@ -34,9 +34,21 @@ public class GornerTableCellRenderer implements TableCellRenderer {
             double col1 = (Double) table.getValueAt(row, col);
             int Col1 = (int) col1;
             col1 -= Col1;
-          
-             panel.setBackground(Color.WHITE);
-           
+            double r;
+            if(col==0) {
+            	 r = (Double) table.getValueAt(row ,0);
+            }else {  r = (Double) table.getValueAt(row ,1);}
+            int sum = 0;
+            for(int i=0;i<4;i++) {
+            	sum+=(int) r%10;
+            	r/=10;
+            }
+            if (sum%10==0&&sum!=0) {
+            	panel.setBackground(Color.GREEN);
+            	sum=0;
+            }
+            else panel.setBackground(Color.WHITE);
+            sum=0;
             
         }
 
